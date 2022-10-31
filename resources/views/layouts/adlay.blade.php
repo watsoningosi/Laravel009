@@ -24,7 +24,9 @@
                     href="/pages/admin">Posts</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3"
                     href="/pages/create">Add Posts</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="">Users</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/pages/users">Users</a>
+
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/pages/newuser">Add Users</a>
 
 
             </div>

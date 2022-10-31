@@ -17,9 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
     protected $fillable = [
         'name',
         'email',
+        'is_admin',
         'password',
     ];
 

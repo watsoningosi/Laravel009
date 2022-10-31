@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+
 Route::get('/pages/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('pages.admin')->middleware('admin');
 Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
 Route::get('/pages/blog/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('blog');
@@ -27,3 +28,10 @@ Route::delete('/pages/admin/{post}', [App\Http\Controllers\PostController::class
 Route::get('/pages/foo', function () {
     return view('pages/foo');
 });
+
+Route::get('/pages/users', [App\Http\Controllers\UserController::class, 'index'])->name('pages.users');
+Route::post('/pages/newuser', [App\Http\Controllers\UserController::class, 'store']);
+Route::get('/pages/newuser', [App\Http\Controllers\UserController::class, 'create']);
+Route::get('/pages/users/{user}/edituser', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
+Route::put('/pages/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+Route::delete('/pages/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
