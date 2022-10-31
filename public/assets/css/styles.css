@@ -295,6 +295,17 @@ kbd kbd {
 figure {
   margin: 0 0 1rem;
 }
+/*  Sidebar Styles  */
+
+ul{
+  
+	list-style: none;
+}
+
+a {
+	text-decoration: none!important;
+}
+
 
 img,
 svg {

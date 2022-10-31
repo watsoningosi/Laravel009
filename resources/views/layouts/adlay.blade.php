@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'BlogMaster') }}</title>
+    <title>Blog Admin</title>
     <link href="/assets/css/styles.css" rel="stylesheet" />
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -18,8 +21,11 @@
             <div class="sidebar-heading border-bottom bg-light">Blog Admin</div>
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3"
-                    href="/pages/admin">Dashboard</a>
+                    href="/pages/admin">Posts</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    href="/pages/create">Add Posts</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="">Users</a>
+
 
             </div>
         </div>
@@ -28,7 +34,7 @@
             <!-- Top navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="container-fluid">
-                    <button class="btn btn-primary" id="sidebarToggle">Menu</button>
+                    <button class="btn btn-primary" id="sidebarToggle"><i class="fa fa-bars"></i></button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation"><span
