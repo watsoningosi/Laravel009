@@ -7,7 +7,7 @@
                 <div class="wrapper">
                     <div class="col-md-12">
                         <div class="row">
-                            @foreach ($post as $post)
+                            @forelse ($post as $post)
                                 <div class="col-md-6 mb-3">
                                     <div class="blog-post">
                                         <div class="card-img"><img class="img-fluid" src="/assets/images/{{ $post->image }}" alt="Blog img"
@@ -21,7 +21,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                                @empty
+                                <p>No relevant articles Yet</p>
+                            @endforelse
                         </div>
                     </div>
                 </div>

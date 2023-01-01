@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence, //Generates a fake 
             'exerpt' =>$this->faker->paragraph(10), 
             'body' => $this->faker->paragraph(30), //generates fake 30 paragraphs
-            'user_id' => (1)
+            'user_id' => User::factory()
         ];
     }
 }

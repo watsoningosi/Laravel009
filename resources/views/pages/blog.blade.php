@@ -10,9 +10,13 @@
                         <p class="lorem_text">Posted On: {{ $post->created_at }}
                         </p>
                         <h2 class="most_text">{{ $post->title }}</h2>
-
-                        {!! $post->body !!}
-
+                        <p class="mb-3">{!! $post->body !!}</p>
+                        <i class="fa fa-tag"></i>
+                        <p class="pull-right d-flex">
+                            @foreach ($post->tags as $tag)
+                                <a class="mr-2" href="{{ route('tag',['tag' => $tag->name]) }}">{{ $tag->name }}</a>
+                            @endforeach
+                        </p>
                     </div>
                 </div>
             </div>

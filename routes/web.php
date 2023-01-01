@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/pages/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('pages.admin')->middleware('admin');
 Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
 Route::get('/pages/blog/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('blog');
+Route::get('/pages/blog', [App\Http\Controllers\PostController::class, 'index'])->name('tag');
 Route::post('/pages/create', [App\Http\Controllers\PostController::class, 'store']);
 Route::get('/pages/create', [App\Http\Controllers\PostController::class, 'create']);
 Route::get('/pages/blog/{post}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');
