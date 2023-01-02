@@ -45,6 +45,8 @@
                                             <textarea name="body" cols="19" rows="6" class="form-control">{{ $post->body }}</textarea>
                                         </div>
 
+                        
+
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
 
