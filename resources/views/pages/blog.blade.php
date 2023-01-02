@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="single">
-                        <div class="about_img mt-3"><img class="img-fluid" src="/assets/images/{{ $post->image }}"></div>
+                        <div class="about_img mt-3"><img class="img-fluid" src="/images/20230102132402.jpg"></div>
                         <br>
                         <p class="lorem_text">Posted On: {{ $post->created_at }}
                         </p>

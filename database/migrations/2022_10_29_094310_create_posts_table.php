@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('exerpt');
             $table->text('body');
             $table->string('image');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->default('1');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

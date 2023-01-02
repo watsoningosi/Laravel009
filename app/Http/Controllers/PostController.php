@@ -38,7 +38,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('pages.create');
+        $tags = Tag::all();
+        return view('pages.create',['tags' => $tags]);
     }
 
     /**
@@ -48,14 +49,19 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $request->validate([
+    {  
+      $post = new Post($request->validate([
             'title' => 'required',
             'exerpt' => 'required',
             'body' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+            'tags' => 'exists:tags,id',
+        ]));
+     # $post->user_id = 1;
+      $post->save();
 
+      $post->tags()->attach(request('tags'));
+    
         $input = $request->all();
 
         if ($image = $request->file('image')) {
@@ -64,8 +70,7 @@ class PostController extends Controller
             $image->move($destinationPath, $postImage);
             $input['image'] = "$postImage";
         }
-
-        Post::create($input);
+        $post->save($input);
 
         return redirect('/')
             ->with('success', 'Your Article has been submitted Successfully.');
@@ -106,7 +111,8 @@ class PostController extends Controller
             //'title' =>['required','min:3','max:255']
             'title' => 'required',
             'exerpt' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'tags' => 'exists:tags,id'
         ]));
 
         $input = $request->all();

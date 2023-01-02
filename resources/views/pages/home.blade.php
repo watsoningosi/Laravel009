@@ -10,8 +10,8 @@
                             @forelse ($post as $post)
                                 <div class="col-md-6 mb-3">
                                     <div class="blog-post">
-                                        <div class="card-img"><img class="img-fluid" src="/assets/images/{{ $post->image }}" alt="Blog img"
-                                                style="width: 600px; height:400px"></div>
+                                        <div class="card-img"><img class="img-fluid" src="/images/done.jpg"
+                                                alt="Blog img" style="width: 600px; height:400px"></div>
                                         <p class="lorem_text">Posted On: {{ $post->created_at }}
                                         </p>
                                         <h2 class="most_text"><a
@@ -21,7 +21,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @empty
+                            @empty
                                 <p>No relevant articles Yet</p>
                             @endforelse
                         </div>
