@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/pages/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+#Route::get('/pages/contact', [App\Http\Controllers\ContactController::class, 'create']);
+Route::post('/pages/contact', [App\Http\Controllers\ContactController::class, 'store']);
+
 Route::get('/pages/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('pages.admin')->middleware('admin');
 Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
 Route::get('/pages/blog/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('blog');
