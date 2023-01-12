@@ -17,15 +17,14 @@
                             @enderror
                         </div>
                         @if (session('message'))
-
-                        <div style="color:green">
-                            {{ session('message') }}
-                        </div>
-                            
+                            <div style="color:
+                        #00FF00">
+                                {{ session('message') }}
+                            </div>
                         @endif
                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
 
-                        
+
                     </form>
 
                 </div>
