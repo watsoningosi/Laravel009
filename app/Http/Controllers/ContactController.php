@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactMe;
+use App\Mail\MailMark;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -40,7 +41,7 @@ class ContactController extends Controller
         request()->validate(['email' => 'required|email']); 
 
         Mail::to(request('email'))
-            ->send(new ContactMe('finance'));
+            ->send(new MailMark('finance'));
 
    /*     Mail::raw('Watson did it', function($message){
            $message->to(request('email'))

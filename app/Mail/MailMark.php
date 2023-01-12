@@ -9,18 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMe extends Mailable
+class MailMark extends Mailable
 {
     use Queueable, SerializesModels;
-    public $course;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($course)
+    public function __construct()
     {
-        $this->course = $course;
+        //
     }
 
     /**
@@ -31,7 +31,7 @@ class ContactMe extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'More Intel Regarding ' . $this->course,
+            subject: 'Mail Mark',
         );
     }
 
@@ -43,9 +43,7 @@ class ContactMe extends Mailable
     public function content()
     {
         return new Content(
-          #  view: 'pages.mailcontact ',
-            markdown: 'pages.mailcontact ',
-            
+            markdown: 'pages.mailmark',
         );
     }
 
