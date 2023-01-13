@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::get('/pages/payment', [App\Http\Controllers\PaymentController::class, 'create'])->middleware('auth');
 Route::post('/pages/payment', [App\Http\Controllers\PaymentController::class, 'store'])->middleware('auth');
+Route::get('notifications', [App\Http\Controllers\UserNotificationController::class, 'show'])->middleware('auth');
 
 Route::get('/pages/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 #Route::get('/pages/contact', [App\Http\Controllers\ContactController::class, 'create']);
