@@ -51,5 +51,11 @@ class User extends Authenticatable
     {
        return $this->hasMany(Post::class);
     }
+
+    public function routeNotificationForVonage($notification)
+    {
+       # return $this->phone_number;
+       return '+254 742 268757';
+    }
      
 }

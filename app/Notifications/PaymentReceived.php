@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\VonageMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -31,7 +32,7 @@ class PaymentReceived extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail', 'database', 'vonage'];
     }
 
     /**
@@ -50,6 +51,19 @@ class PaymentReceived extends Notification
                     ->line('Thank you for using our application!')
                     ->line('thanks ');
     }
+
+    /**
+ * Get the Vonage / SMS representation of the notification.
+ *
+ * @param  mixed  $notifiable
+ * @return \Illuminate\Notifications\Messages\VonageMessage
+ */
+public function toVonage($notifiable)
+{
+    return (new VonageMessage())
+                ->content('Your paradigm payment has been proccessed')
+                ->from('+254 742 268757');
+}
 
     /**
      * 
