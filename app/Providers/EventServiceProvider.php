@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\ProductPurchase;
+use App\Listeners\AwardAchievements;
+use App\Listeners\GetCoupon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -17,7 +20,8 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
-        ],
+        ]
+     
     ];
 
     /**
@@ -37,6 +41,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function shouldDiscoverEvents()
     {
-        return false;
+        return true;
     }
 }

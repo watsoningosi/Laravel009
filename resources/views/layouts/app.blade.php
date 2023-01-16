@@ -50,6 +50,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/pages/contact">Contact</a>
                                 </li>
+                                
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -75,6 +76,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/pages/contact">Contact</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/payment">Pay</a>
+                            </li>
+                            
                         @endguest
 
                     </ul>
