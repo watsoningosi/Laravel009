@@ -39,42 +39,56 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::all();
-        return view('pages.create',['tags' => $tags]);
+        return view('pages.create', ['tags' => $tags]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function store1(Request $request)
+    {
+        $this->ValidatePost();
+
+        $name = time() . '.' . $request->image->extension();
+        $path = $request->image->move(public_path('images'), $name);
+
+        $post = new Post(request(['title', 'exerpt', 'image', 'body']));
+
+        $post->auth()->id();
+
+        $post->tags()->attach(request('tags'));
+
+        return redirect('/');
+    }
+
     public function store(Request $request)
-    {  
-      $post = new Post($request->validate([
-            'title' => 'required',
-            'exerpt' => 'required',
-            'body' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'tags' => 'exists:tags,id',
-        ]));
-     # $post->user_id = 1;
-      $post->save();
+    {
+        $this->ValidatePost();
 
-      $post->tags()->attach(request('tags'));
-    
-        $input = $request->all();
+        $name = time() . '.' . $request->image->extension();
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $postImage);
-            $input['image'] = "$postImage";
-        }
-        $post->save($input);
+        $path = $request->image->move(public_path('images'), $name);
+
+        $post = new Post();
+        
+        $post->title = request('title');
+
+        $post->body = request('body');
+
+        $post->exerpt = request('exerpt');
+
+        $post->image = $name;
+
+        $post->save();
+
+        # $post->user_id = 1;
+
+        $post->tags()->attach(request('tags'));
 
         return redirect('/')
-            ->with('success', 'Your Article has been submitted Successfully.');
+                   ->with('image',$name);
     }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -94,7 +108,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
-    {   
+    {
         return view('pages.edit', compact('post'));
     }
 
@@ -148,5 +162,16 @@ class PostController extends Controller
 
         return redirect('/pages/admin')
             ->with('success', 'Post deleted successfully');
+    }
+
+    public function ValidatePost()
+    {
+        return request()->validate([
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'title' => 'required',
+            'exerpt' => 'required',
+            'body' => 'required',
+            'tags' => 'exists:tags,id',
+        ]);
     }
 }

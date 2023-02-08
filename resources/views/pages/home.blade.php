@@ -10,7 +10,7 @@
                             @forelse ($post as $post)
                                 <div class="col-md-6 mb-3">
                                     <div class="blog-post">
-                                        <div class="card-img"><img class="img-fluid" src="/images/done.jpg"
+                                        <div class="card-img"><img class="img-fluid" src="/images/{{ $post->image }}"
                                                 alt="Blog img" style="width: 600px; height:400px"></div>
                                         <p class="lorem_text">Posted On: {{ $post->created_at }}
                                         </p>

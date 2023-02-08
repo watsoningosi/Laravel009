@@ -17,7 +17,7 @@
                                         {{ Session::get('success') }}
                                     </div>
                                 @endif
-                                <form method="post" action="/pages/create" enctype="multipart/form-data">
+                                <form method="post" action="/pages/create"  enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="form-group mb-3">
